@@ -1,0 +1,28 @@
+#resources
+resources:
+
+- name: ci-git
+  type: git
+  source:
+    uri: ((ist.demo.git.url))
+    private_key: ((ist.demo.git.private-key))
+    paths:
+      - ci
+
+- name: main-git
+  type: git
+  source:
+    uri: ((ist.demo.git.url))
+    private_key: ((ist.demo.git.private-key))
+
+# jobs
+
+jobs:
+- name: test-demo
+  plan:
+    - get: main-git
+      trigger: true
+    - get: ci-git
+    - task: unit-test
+      file: ci-git/demo/test.yml
+
