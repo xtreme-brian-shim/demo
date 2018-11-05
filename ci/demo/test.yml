@@ -14,7 +14,7 @@ caches:
   - path: .gradle/
 
 run:
-  path: ci-git/demo/test.sh
+  path: ci-git/ci/demo/test.sh
   args:
     - main-git
 

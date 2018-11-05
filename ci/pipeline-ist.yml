@@ -24,5 +24,5 @@ jobs:
       trigger: true
     - get: ci-git
     - task: unit-test
-      file: ci-git/demo/test.yml
+      file: ci-git/ci/demo/test.yml
 
