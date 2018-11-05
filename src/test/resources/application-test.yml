@@ -1,2 +1,19 @@
-demo:
-  baseUrl: http://localhost:8090
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:mem:demo_dev;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: demo
+    password: demo
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: true
+    locations: filesystem:databases/migrations
