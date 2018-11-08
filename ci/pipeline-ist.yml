@@ -40,6 +40,7 @@ jobs:
   plan:
     - get: main-git
       passed: [test-demo]
+      trigger: true
     - get: ci-git
       passed: [test-demo]
     - task: build
