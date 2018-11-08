@@ -1,15 +1,8 @@
 spring:
- application:
-    name: demoservice
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/DEMOSERVICE
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      data-source-properties:
-        useSSL: false
-        useTimezone: true
-        serverTimezone: UTC
-        useLegacyDatetimeCode: false
   profiles:
     active: cloud
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    enabled: true
+    locations: filesystem:databases/migrations
