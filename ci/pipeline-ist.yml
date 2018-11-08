@@ -15,6 +15,16 @@ resources:
     uri: ((ist.demo.git.url))
     private_key: ((ist.demo.git.private-key))
 
+- name: cf-demo
+  type: cf
+  source:
+    api: ((ist.demo.cf.api))
+    username: ((ist.demo.cf.username))
+    password: ((ist.demo.cf.password))
+    organization: ((ist.demo.cf.organization))
+    space: ((ist.demo.cf.space))
+    skip-cert-check: true
+
 # jobs
 
 jobs:
@@ -25,4 +35,26 @@ jobs:
     - get: ci-git
     - task: unit-test
       file: ci-git/ci/demo/test.yml
+
+- name: deploy-demo
+  plan:
+    - get: main-git
+      passed: [test-demo]
+    - get: ci-git
+      passed: [test-demo]
+    - task: build
+      file: ci-git/ci/demo/build.yml
+      params:
+        route: ((ist.demoService.baseUrl))
+    - put: cf-demo
+      params:
+        manifest: deploy/manifest.yml
+        path: deploy/*.jar
+        current_app_name: demo-service-ist
+        environment_variables:
+          SPRING_PROFILES_ACTIVE: cloud
+          DEMO_BASEURL: ((ist.demoService.baseUrl))
+
+
+
 
