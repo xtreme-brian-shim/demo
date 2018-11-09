@@ -1,7 +1,7 @@
 spring:
   flyway:
     enabled: true
-    locations: filesystem:databases/migrations
+    locations: classpath:databases/migrations
 server:
   port: 8090
 demo:

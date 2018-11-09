@@ -13,7 +13,7 @@ spring:
         useLegacyDatetimeCode: false
   flyway:
     enabled: true
-    locations: classpath:/databases/migrations
+    locations: classpath:databases/migrations
 server:
   port: 8090
 demo:

@@ -3,4 +3,4 @@ spring:
     active: cloud
   flyway:
     enabled: true
-    locations: filesystem:databases/migrations
+    locations: classpath:databases/migrations
