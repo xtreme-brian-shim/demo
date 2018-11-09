@@ -1,8 +1,6 @@
 spring:
   profiles:
     active: cloud
-  datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
     enabled: true
-    locations: classpath:databases/migrations
+    locations: classpath:/databases/migrations

@@ -36,12 +36,6 @@ dependencies {
 	testImplementation('org.springframework.security:spring-security-test')
 }
 
-//flyway() {
-//	url = 'jdbc:mysql://localhost:3306/demo_dev'
-//	user = 'demo'
-//	password = 'demo'
-//}
-
 test {
 	useJUnit {
 		excludeCategories = ['com.eq.demo.integration.DemoIntegrationTest']
